@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "process",
+			"label": "dotnet: Build and Deploy Plugin",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"-p:DeployToProd=true"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$msCompile"
+		}
+	]
+}

@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <AssemblyName>angelaboobs</AssemblyName>
+    <Product>$(AssemblyName)</Product>
+    <Version>1.0.0</Version>
+
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="UnityEngine.Modules" Version="2021.3.16">
+      <IncludeAssets>all</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2"
+      PrivateAssets="all" />
+
+    <Reference Include="$(DependsDir)/Assembly-CSharp.dll" Publicize="true" />
+    <Reference Include="$(DependsDir)/Mirror.dll" />
+    <Reference Include="EasySettings">
+      <HintPath>..\..\..\..\..\.config\r2modmanPlus-local\ATLYSS\profiles\Default\BepInEx\plugins\Nessie-EasySettings\EasySettings.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference
+      Include="BepInEx.Analyzers"
+      PrivateAssets="all"
+      Version="1.*" />
+
+    <PackageReference
+      Include="BepInEx.Core"
+      Version="5.4.*" />
+  </ItemGroup>
+
+  <!-- 
+  How to include thunderstore mods as dependencies via nuget
+
+  I have already added the windows10ce nuget feed to this project
+  in NuGet.Config so all you need to do is list a dependency like
+  this:
+
+  <ItemGroup>
+    <PackageReference Include="Nessie-EasySettings" Version="1.1.3" Private="False"/>
+  </ItemGroup>
+
+  Private="false" will stop it from being copied to the output folder
+  during build. This will cause EasySettings to be downloaded and its
+  methods will be available at compile time for your code. You'll still
+  need to add it as a dependency in your manifest.json, of course
+  -->
+
+  <Import Project="$(SolutionRoot)Config.Build.user.props" />
+
+</Project>

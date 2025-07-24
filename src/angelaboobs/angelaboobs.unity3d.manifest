@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2777650036
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 92a67d11d3a4f5b452392315e9858b13
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2edfeee0fffd52782c286e532ff06aef
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 92a67d11d3a4f5b452392315e9858b13
+HashAppended: 0
+ClassTypes:
+- Class: 43
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Export/angela_boobs.asset
+Dependencies: []
