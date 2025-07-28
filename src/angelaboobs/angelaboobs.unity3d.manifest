@@ -1,20 +1,22 @@
 ManifestFileVersion: 0
-CRC: 2777650036
+CRC: 3666205922
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 92a67d11d3a4f5b452392315e9858b13
+    Hash: 878376a396e970cc836071450bfd2b80
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2edfeee0fffd52782c286e532ff06aef
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 92a67d11d3a4f5b452392315e9858b13
+    Hash: 878376a396e970cc836071450bfd2b80
 HashAppended: 0
 ClassTypes:
 - Class: 43
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Export/angela_robeSkirt.asset
+- Assets/Export/angela_base.asset
 - Assets/Export/angela_boobs.asset
 Dependencies: []
