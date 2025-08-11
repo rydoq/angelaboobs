@@ -1,7 +1,7 @@
 {
-    "name": "AngelaBoobs",
-    "description": "A mod that adds breast sliders and more to Angela",
-    "version_number": "2.0.0",
+    "name": "NPCAppearanceMod",
+    "description": "A mod that lets you change NPC appearances, currently featuring Angela and Sally",
+    "version_number": "3.0.0",
     "dependencies": ["BepInEx-BepInExPack-5.4.2100","Nessie-EasySettings-1.1.8"],
     "website_url": "https://github.com/rydoq/angelaboobs"
 }
