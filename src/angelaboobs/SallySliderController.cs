@@ -155,11 +155,11 @@ public class SallySliderController : MonoBehaviour
         apron.materials[1].mainTexture = SallySliderBase.apronless.Value ? Texture2D.blackTexture : NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.Base, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]);
         tail.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.Tail, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]);
         broom.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.Broom, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]);
-        shadow.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Shadow, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]);
+        shadow.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.Shadow, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]);
 
-        SallySliderBase.facepic1Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic1, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic1Sprite.rect, SallySliderBase.facepic1Sprite.pivot, SallySliderBase.facepic1Sprite.pixelsPerUnit, 0);
-        SallySliderBase.facepic2Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic2, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic2Sprite.rect, SallySliderBase.facepic2Sprite.pivot, SallySliderBase.facepic2Sprite.pixelsPerUnit, 0);
-        SallySliderBase.facepic3Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic3, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic3Sprite.rect, SallySliderBase.facepic3Sprite.pivot, SallySliderBase.facepic3Sprite.pixelsPerUnit, 0);
+        SallySliderBase.facepic1Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.FacePic1, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic1Sprite.rect, SallySliderBase.facepic1Sprite.pivot, SallySliderBase.facepic1Sprite.pixelsPerUnit, 0);
+        SallySliderBase.facepic2Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.FacePic2, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic2Sprite.rect, SallySliderBase.facepic2Sprite.pivot, SallySliderBase.facepic2Sprite.pixelsPerUnit, 0);
+        SallySliderBase.facepic3Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Sally, TexturesEnum.FacePic3, SallySliderBase.textureFolderNames[SallySliderBase.selectedTexture]), SallySliderBase.facepic3Sprite.rect, SallySliderBase.facepic3Sprite.pivot, SallySliderBase.facepic3Sprite.pixelsPerUnit, 0);
 
         for (int i = 0; i < SallySliderBase.DialogList.Count; i++)
         {
