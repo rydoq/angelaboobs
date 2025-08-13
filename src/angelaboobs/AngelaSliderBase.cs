@@ -52,7 +52,11 @@ public class AngelaSliderBase : MonoBehaviour
     InitConfig();
     Settings.OnApplySettings.AddListener(() =>
     {
-      textureSelector.Value = selectedTexture;
+      if (textureSelector.Value != selectedTexture)
+      {
+        textureSelector.Value = selectedTexture;
+        AngelaSliderController.textureChanged = true;
+      }
       config.Save();
       if (AngelaSliderController != null)
         AngelaSliderController.ApplySettings();

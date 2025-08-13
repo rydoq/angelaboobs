@@ -12,6 +12,7 @@ public class AngelaSliderController : MonoBehaviour
     public float boobSag;
     public float assSize;
     public float thighsThick;
+    public bool textureChanged = true;
 
     public SkinnedMeshRenderer boobs;
     public SkinnedMeshRenderer torso;
@@ -54,110 +55,203 @@ public class AngelaSliderController : MonoBehaviour
         torso.SetBlendShapeWeight(torso.sharedMesh.GetBlendShapeIndex("key_assSize"), assSize);
         torso.SetBlendShapeWeight(torso.sharedMesh.GetBlendShapeIndex("key_thighSize"), thighsThick);
         skirt.SetBlendShapeWeight(skirt.sharedMesh.GetBlendShapeIndex("key_thighSize"), thighsThick);
-        
+
         if (AngelaSliderBase.topless.Value)
         {
             if (AngelaSliderBase.bottomless.Value)
             {
-                boobs.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_nude");
-                torso.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_nude");
-                arms.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_nude");
-                hairTuft.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_nude");
+                NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base] =
+                    NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base,
+                        AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_nude");
             }
             else
             {
-                boobs.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_topless");
-                torso.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_topless");
-                arms.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_topless");
-                hairTuft.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_topless");
+                NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base] =
+                    NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base,
+                        AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_topless");
             }
         }
         else if (AngelaSliderBase.bottomless.Value)
         {
-            boobs.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_bottomless");
-            torso.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_bottomless");
-            arms.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_bottomless");
-            hairTuft.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_bottomless");
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base] =
+                NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_bottomless");
         }
         else
         {
-            boobs.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_base");
-            torso.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_base");
-            arms.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_base");
-            hairTuft.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_base");
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base] =
+                NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Base,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "angelaTex_01_base");
         }
-        
-        torso.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Face, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        skirt.material.mainTexture = AngelaSliderBase.bottomless.Value ? Texture2D.blackTexture : NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Skirt, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        arms.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blue3, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        ears.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Tail, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        ears.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Bell, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        
-        switch (eyes.material.mainTexture.name)
-        {
-            case "angelaEyeTex.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex2.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye2, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex3.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye3, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex4.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye4, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex_5.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye5, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex_down.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeDown, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex_L.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeLeft, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex_R.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeRight, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-            case "angelaEyeTex_pissed.png":
-                eyes.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyePissed, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-                break;
-        }
-        
-        eyes.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Red, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        feet.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blui2, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        feet.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blui2, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        horns.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blue3, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        necklace.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blu, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        necklace.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Bell, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        tail.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Tail, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        tail.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Blue3, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        glyph.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Glyph, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "tomeGlyph");
-        bookL.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookSpine, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        bookL.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookCover, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        bookR.materials[0].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookSpine, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        bookR.materials[1].mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookCover, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
-        shadow.material.mainTexture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Shadow, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
 
-        AngelaSliderBase.facepic1Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic1, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]), AngelaSliderBase.facepic1Sprite.rect, AngelaSliderBase.facepic1Sprite.pivot, AngelaSliderBase.facepic1Sprite.pixelsPerUnit, 0);
-        AngelaSliderBase.facepic2Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic2, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]), AngelaSliderBase.facepic2Sprite.rect, AngelaSliderBase.facepic2Sprite.pivot, AngelaSliderBase.facepic2Sprite.pixelsPerUnit, 0);
-        AngelaSliderBase.facepic3Sprite = Sprite.Create(NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.FacePic3, AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]), AngelaSliderBase.facepic3Sprite.rect, AngelaSliderBase.facepic3Sprite.pivot, AngelaSliderBase.facepic3Sprite.pixelsPerUnit, 0);
-
-        for (int i = 0; i < AngelaSliderBase.DialogList.Count; i++)
+        boobs.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base];
+        torso.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base];
+        arms.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base];
+        hairTuft.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Base];
+        
+        if (textureChanged)
         {
-            if (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela01")
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Face] =
+                NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Face,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            torso.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Face];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Skirt] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Skirt,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blue3] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Blue3,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            horns.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blue3];
+            arms.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blue3];
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Tail] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Tail,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            tail.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Tail];
+            tail.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blue3];
+            ears.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Tail];
+            
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Bell] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Bell,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            ears.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Bell];
+            
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye2] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye2,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye3] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye3,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye4] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye4,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye5] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye5,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeDown] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeDown,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeLeft] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeLeft,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeRight] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeRight,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyePissed] = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyePissed,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+
+            switch (eyes.material.mainTexture.name)
             {
-                AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic1Sprite;
+                case "angelaEyeTex.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye];
+                    break;
+                case "angelaEyeTex2.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye2];
+                    break;
+                case "angelaEyeTex3.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye3];
+                    break;
+                case "angelaEyeTex4.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye4];
+                    break;
+                case "angelaEyeTex_5.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Eye5];
+                    break;
+                case "angelaEyeTex_down.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeDown];
+                    break;
+                case "angelaEyeTex_L.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeLeft];
+                    break;
+                case "angelaEyeTex_R.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyeRight];
+                    break;
+                case "angelaEyeTex_pissed.png":
+                    eyes.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.EyePissed];
+                    break;
             }
-            else if  (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela02")
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Red] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Red,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            eyes.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Red];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blui2] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Blui2,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            feet.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blui2];
+            feet.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blui2];
+            
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blu] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Blu,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+
+            necklace.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Blue3];
+            necklace.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Bell];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Glyph] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Glyph,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture], "tomeGlyph");
+            glyph.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Glyph];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookSpine] =
+                NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookSpine,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookCover] =
+                NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.BookCover,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            bookL.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookSpine];
+            bookL.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookCover];
+            bookR.materials[0].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookSpine];
+            bookR.materials[1].mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.BookCover];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Shadow] = NPCPatcherBase.LoadTextureOrDefault(
+                NPCEnum.Angela, TexturesEnum.Shadow,
+                AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            shadow.material.mainTexture = NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Shadow];
+
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic1] =
+                NPCPatcherBase.LoadTextureOrDefault(
+                    NPCEnum.Angela, TexturesEnum.FacePic1,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic2] =
+                NPCPatcherBase.LoadTextureOrDefault(
+                    NPCEnum.Angela, TexturesEnum.FacePic2,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+            NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic3] =
+                NPCPatcherBase.LoadTextureOrDefault(
+                    NPCEnum.Angela, TexturesEnum.FacePic3,
+                    AngelaSliderBase.textureFolderNames[AngelaSliderBase.selectedTexture]);
+
+            AngelaSliderBase.facepic1Sprite = Sprite.Create(
+                NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic1],
+                AngelaSliderBase.facepic1Sprite.rect, AngelaSliderBase.facepic1Sprite.pivot,
+                AngelaSliderBase.facepic1Sprite.pixelsPerUnit, 0);
+            AngelaSliderBase.facepic2Sprite = Sprite.Create(
+                NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic2],
+                AngelaSliderBase.facepic2Sprite.rect, AngelaSliderBase.facepic2Sprite.pivot,
+                AngelaSliderBase.facepic2Sprite.pixelsPerUnit, 0);
+            AngelaSliderBase.facepic3Sprite = Sprite.Create(
+                NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.FacePic3],
+                AngelaSliderBase.facepic3Sprite.rect, AngelaSliderBase.facepic3Sprite.pivot,
+                AngelaSliderBase.facepic3Sprite.pixelsPerUnit, 0);
+
+            for (int i = 0; i < AngelaSliderBase.DialogList.Count; i++)
             {
-                AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic2Sprite;
+                if (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela01")
+                {
+                    AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic1Sprite;
+                }
+                else if (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela02")
+                {
+                    AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic2Sprite;
+                }
+                else if (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela03")
+                {
+                    AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic3Sprite;
+                }
             }
-            else if  (AngelaSliderBase.DialogList[i].facepic.texture.name == "facepic_angela03")
-            {
-                AngelaSliderBase.DialogList[i].facepic = AngelaSliderBase.facepic3Sprite;
-            }
+            textureChanged = false;
         }
+        
+        skirt.material.mainTexture = AngelaSliderBase.bottomless.Value
+            ? Texture2D.blackTexture
+            : NPCPatcherBase.textureDictionary[NPCEnum.Angela][TexturesEnum.Skirt];
 
         boobBoneL = boobBoneLOrig;
         boobBoneR = boobBoneROrig;

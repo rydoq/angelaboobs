@@ -8,6 +8,7 @@ using Nessie.ATLYSS.EasySettings;
 using Nessie.ATLYSS.EasySettings.UIElements;
 using BepInEx.Configuration;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Net.Mime;
 using Object = System.Object;
@@ -127,6 +128,8 @@ public class NPCPatcherBase : BaseUnityPlugin
             { TexturesEnum.FacePic3, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_sally03")) },
         }}
     };
+
+    public static List<Texture2D> customTextures = new();
     //public static Texture2D[] Textures { get; set; }
     
     
@@ -267,12 +270,21 @@ public class NPCPatcherBase : BaseUnityPlugin
         [HarmonyPostfix]
         public static void FilteringModePatch(FilterMode _filterMode)
         {
-            foreach (KeyValuePair<NPCEnum, Dictionary<TexturesEnum, Texture2D>> textureGroup in textureDictionary)
+            foreach (Dictionary<TexturesEnum, Texture2D> textureGroup in textureDictionary.Values)
             {
-                foreach (KeyValuePair<TexturesEnum, Texture2D> texture in textureGroup.Value)
+                foreach (Texture2D texture in textureGroup.Values)
                 {
-                    texture.Value.filterMode = _filterMode;
-                    texture.Value.anisoLevel = 16;
+                    texture.filterMode = _filterMode;
+                    texture.anisoLevel = 16;
+                }
+            }
+
+            if (customTextures.Any() == true)
+            {
+                foreach (Texture2D texture in customTextures)
+                {
+                    texture.filterMode = _filterMode;
+                    texture.anisoLevel = 16;
                 }
             }
         }

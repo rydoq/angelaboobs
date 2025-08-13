@@ -61,7 +61,12 @@ public class SallySliderBase : MonoBehaviour
     InitConfig();
     Settings.OnApplySettings.AddListener(() =>
     {
-      textureSelector.Value = selectedTexture;
+      if (textureSelector.Value != selectedTexture)
+      {
+        textureSelector.Value = selectedTexture;
+        SallySliderController.textureChanged = true;
+      }
+      
       config.Save();
       if (SallySliderController != null)
         SallySliderController.ApplySettings();
