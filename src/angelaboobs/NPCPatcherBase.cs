@@ -18,7 +18,8 @@ namespace angelaboobs;
 public enum NPCEnum // named the same as the folders inside the /config/NPCNSFWModTextures
 {
     Angela,
-    Sally
+    Sally,
+    Enok
 }
 
 public enum TexturesEnum {
@@ -54,7 +55,11 @@ public enum TexturesEnum {
     Ears,
     HoodGem,
     Broom,
-    Apron
+    Apron,
+    Tex1,
+    Tex2,
+    Tex3,
+    Axe
 }
 
 [BepInPlugin(LCMPluginInfo.PLUGIN_GUID, LCMPluginInfo.PLUGIN_NAME, LCMPluginInfo.PLUGIN_VERSION)]
@@ -67,6 +72,7 @@ public class NPCPatcherBase : BaseUnityPlugin
     
     internal AngelaSliderBase AngelaSlider;
     internal SallySliderBase SallySlider;
+    internal EnokSliderBase EnokSlider;
     internal static GameObject NPCPatcherObject = new("NPCPatcher-GameObject")
     {
         hideFlags = HideFlags.HideAndDontSave,
@@ -126,12 +132,20 @@ public class NPCPatcherBase : BaseUnityPlugin
             { TexturesEnum.FacePic1, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_sally01")) },
             { TexturesEnum.FacePic2, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_sally02")) },
             { TexturesEnum.FacePic3, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_sally03")) },
+        }},
+        
+        { NPCEnum.Enok, new () {
+            { TexturesEnum.Tex1, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokTex_01")) },
+            { TexturesEnum.Tex2, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokTex_02")) },
+            { TexturesEnum.Tex3, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokTex_03")) },
+            { TexturesEnum.Red, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokRedTex")) },
+            { TexturesEnum.Axe, Resources.Load<Texture2D>(Path.Combine("_graphic/_mesh/03_item/01_weapon/00_axehammer/_heavyaxe01", "heavyAxe01Tex_01")) },
+            { TexturesEnum.Shadow, Resources.Load<Texture2D>(Path.Combine("_graphic/_particle/shadow")) },
+            { TexturesEnum.FacePic1, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_enok01")) },
         }}
     };
 
     public static List<Texture2D> customTextures = new();
-    //public static Texture2D[] Textures { get; set; }
-    
     
     private void Awake()
     {
@@ -156,8 +170,10 @@ public class NPCPatcherBase : BaseUnityPlugin
             SallySlider = NPCPatcherObject.AddComponent<SallySliderBase>();
             SallySlider.info = Info;
             SallySlider.config = Config;
+            EnokSlider = NPCPatcherObject.AddComponent<EnokSliderBase>();
+            EnokSlider.info = Info;
+            EnokSlider.config = Config;
         });
-        
         
         Config.Save();
         Log.LogInfo($"Plugin {LCMPluginInfo.PLUGIN_NAME} version {LCMPluginInfo.PLUGIN_VERSION} is loaded!");
@@ -231,38 +247,6 @@ public class NPCPatcherBase : BaseUnityPlugin
     
         return newTex;
     }
-
-    /*
-    public static void LoadTexturesIntoVariables(NPCEnum npc, List<string> textureFolderNames, int selectedTexture)
-    {
-        Log.LogInfo("Loading textures...");
-
-        for (int i = 0; i < textureDictionary[npc].Count; i++)
-        {
-            textureDictionary[npc][i]
-        }
-        
-        foreach (KeyValuePair<NPCEnum, Dictionary<TexturesEnum, Texture2D>> textureGroup in textureDictionary)
-        {
-            foreach (KeyValuePair<TexturesEnum, Texture2D> texture in textureGroup.Value)
-            {
-                texture.Value = LoadTextureOrDefault(npc, texture.Key, textureGroup.Key, selectedTexture);
-            }
-        }
-    }
-    
-    /*
-    public void LoadTexturesIntoVariables(Texture2D[] textures)
-    {
-        Log.LogInfo("Loading textures...");
-        for (int i = 0; i < textures.Length; i++)
-        {
-            var texEnum = (TexturesEnum)i;
-            textures[i] = LoadTextureOrDefault(texEnum);
-        }
-        Log.LogInfo("Loaded textures");
-    }
-    */
     
     [HarmonyPatch(typeof(VisualManager), nameof(VisualManager.Apply_FilteringMode))]
     public static class ChangeFilteringModePatch
