@@ -104,14 +104,22 @@ public class AngelaSliderBase : MonoBehaviour
   {
     eyeController._textureStructs[0]._texture =
       NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[1]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeLeft, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[2]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeRight, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[3]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyeDown, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[4]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye3, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[5]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye2, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[6]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.EyePissed, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[7]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye4, textureFolderNames[selectedTexture]);
-    eyeController._textureStructs[8]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye5, textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[1]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela,
+      TexturesEnum.EyeLeft, textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[2]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela,
+      TexturesEnum.EyeRight, textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[3]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela,
+      TexturesEnum.EyeDown, textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[4]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye3,
+      textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[5]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye2,
+      textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[6]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela,
+      TexturesEnum.EyePissed, textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[7]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye4,
+      textureFolderNames[selectedTexture]);
+    eyeController._textureStructs[8]._texture = NPCPatcherBase.LoadTextureOrDefault(NPCEnum.Angela, TexturesEnum.Eye5,
+      textureFolderNames[selectedTexture]);
   }
   
   private void InitConfig()

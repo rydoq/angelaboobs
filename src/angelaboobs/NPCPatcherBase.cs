@@ -139,7 +139,7 @@ public class NPCPatcherBase : BaseUnityPlugin
             { TexturesEnum.Tex2, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokTex_02")) },
             { TexturesEnum.Tex3, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokTex_03")) },
             { TexturesEnum.Red, Resources.Load<Texture2D>(Path.Combine(NPC_TEXTURE_ASSET_LOCATION, "enok", "enokRedTex")) },
-            { TexturesEnum.Axe, Resources.Load<Texture2D>(Path.Combine("_graphic/_mesh/03_item/01_weapon/00_axehammer/_heavyaxe01", "heavyAxe01Tex_01")) },
+            { TexturesEnum.Axe, Resources.Load<Texture2D>(Path.Combine("_graphic/_mesh/03_item/01_weapon/00_greatweapon/_heavyaxe01", "heavyAxe01Tex_01")) },
             { TexturesEnum.Shadow, Resources.Load<Texture2D>(Path.Combine("_graphic/_particle/shadow")) },
             { TexturesEnum.FacePic1, Resources.Load<Texture2D>(Path.Combine("_graphic/_ui/_facepics", "facepic_enok01")) },
         }}
@@ -158,8 +158,9 @@ public class NPCPatcherBase : BaseUnityPlugin
         new Harmony("ry.npcpatcher").PatchAll();
         
         if (VerboseLogging)
-            foreach (KeyValuePair<TexturesEnum, Texture2D> kvp in textureDictionary[NPCEnum.Angela])
-                Log.LogInfo("Loaded Texture2D " + textureDictionary[NPCEnum.Angela][kvp.Key]);
+            foreach (KeyValuePair<NPCEnum, Dictionary<TexturesEnum, Texture2D>> dict in textureDictionary)
+                foreach (KeyValuePair<TexturesEnum, Texture2D> kvp in dict.Value)
+                    Log.LogInfo("Loaded Texture2D " + dict.Value[kvp.Key]);
 
         bundle = AssetBundle.LoadFromFile(Info.Location.Replace("angelaboobs.dll", "angelaboobs.unity3d"));
         
@@ -177,6 +178,7 @@ public class NPCPatcherBase : BaseUnityPlugin
         
         Config.Save();
         Log.LogInfo($"Plugin {LCMPluginInfo.PLUGIN_NAME} version {LCMPluginInfo.PLUGIN_VERSION} is loaded!");
+        Log.LogInfo(textureDictionary);
     }
     
     private static Texture2D LoadTexture(string fullPath, string objname)
